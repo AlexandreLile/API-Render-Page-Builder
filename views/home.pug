@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    link(rel="stylesheet", href="/css/style.css")
+    title Page de Composants
+  body
+    // Parcourir et afficher les composants
+    each comp in page.components
+      case comp.type
+        when 'MyHero'
+          section.hero(style=`height: ${comp.height}vh;`)
+            div.hero_content
+                h1(style=`color: ${comp.titleColor}; font-size: ${comp.titleFontSize}rem;`) #{comp.title}
+                h2 #{comp.subTitle}
+        when 'Mytext'
+          div.text
+            h2 Text
+            p ID: #{comp.id}
+            p Type: #{comp.type}
+            p Title: #{comp.title}
+            p Padding Top: #{comp.paddingTop}
+        when 'MyItems'
+          div.items
+            h2 Text
+            p ID: #{comp.id}
+            p Type: #{comp.type}
+            
+        default
+          p Unknown Component Type: #{comp.type}
